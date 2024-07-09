@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import AppRoutes from './lib/router/AppRoutes';
-
+import '../src/lib/assets/scss/custom.scss';
 function App() {
   return (
     <div className="App">

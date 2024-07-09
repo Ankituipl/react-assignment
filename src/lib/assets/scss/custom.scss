@@ -1,0 +1,138 @@
+// Import Bootstrap SCSS
+@import '~bootstrap/scss/bootstrap';
+@import "./variables";
+
+body{
+    background-color: $body;
+    font-size: $normal;
+}
+.login-wrapper{
+    padding: 20px 0;
+    min-height: calc(100vh - 40px);
+}
+.navbrand{
+    display: inline-block;
+    .logo{
+        width: 380px;
+        max-width: 90%;
+        margin-bottom: 40px;
+        @media(max-width:767px){
+            width: 270px;
+        }
+}
+}
+.login-box{
+    background-color: $white;
+    padding: 30px;
+    margin-bottom: 15px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+}
+.form-group{
+    position: relative;
+    margin-bottom: 10px;
+    .input-group-text{
+        background-color: transparent;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        border: none;
+        height: 38px;
+        padding-left: 12px;
+        padding-right: 6px;
+    }
+    .form-control{
+        border-radius: 8px !important;
+        padding-left: 40px;
+        &.password{
+            padding-right: 40px;
+        }
+    }
+}
+.show-password{
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    z-index: 9 !important;
+    outline: none;
+    border: none;
+    &:focus{
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+}
+.forgot-pass{
+    color: $secondary;
+    font-size: $normal;
+}
+.login-btn{
+    background: $secondary;
+    color: $white;
+    border-radius: 4px;
+    width: 200px;
+    max-width: 100%;
+    &:hover{
+        background: $secondary;
+        color: $white;
+        opacity: 0.8;
+    }
+}
+
+.switchcheck{
+    input {
+      position: absolute;
+      left: -99em;
+    }
+  .toggle {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 26px;
+    background-color: rgba($secondary, 0.6);
+    border-radius: 90px - 6;
+    transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    margin: 0 5px;
+  }
+  
+  .toggle__handler {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: $white;
+    border-radius: 50px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform:  rotate(-45deg);
+    
+  }
+  
+  input:checked {
+    + .toggle {
+      background-color: $primary;
+      .toggle__handler {
+        background-color: $white;
+        transform: translate3d(24px, 0, 0) rotate(0);
+      }
+    }
+  }
+}
+
+p{
+    &.error{
+        color: $danger;
+        font-size: $normal - 2;
+        margin: 0;
+    }
+}
+
+footer{
+    text-align: center;
+    font-size: $normal;
+}
