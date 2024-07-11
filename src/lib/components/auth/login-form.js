@@ -2,51 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import formValidator from '../../hooks/validators';
 import validate from '../../utils/validator/validateInfo';
+import translation from '../../utils/utility/translation.json';
+
 const detectBrowserLanguage = () => {
     const supportedLanguages = ['en', 'hi', 'ta'];
     const defaultLanguage = 'en';
     const browserLanguage = navigator.language.slice(0, 2);
     return supportedLanguages.includes(browserLanguage) ? browserLanguage : defaultLanguage;
 };
-const translations = {
-    en: {
-        email: 'Email',
-        password: 'Password',
-        language: 'Language',
-        selectLanguage: 'Select language',
-        forgot: 'Forgot password?',
-        english: 'English',
-        hindi: 'Hindi',
-        tamil: 'Tamil',
-        remember: 'Remember me',
-        login: 'Login'
-    },
-    hi: {
-        email: 'ईमेल',
-        password: 'पासवर्ड',
-        language: 'भाषा',
-        selectLanguage: 'भाषा चुनें',
-        forgot: 'पासवर्ड भूल गए?',
-        english: 'अंग्रेज़ी',
-        hindi: 'हिन्दी',
-        tamil: 'तमिल',
-        remember: 'मुझे याद करो',
-        login: 'लॉगिन'
-    },
-    ta: {
-        email: 'மின்னஞ்சல்',
-        password: 'கடவுச்சொல்',
-        language: 'மொழி',
-        selectLanguage: 'மொழியைத் தேர்ந்தெடுக்கவும்',
-        forgot: 'கடவுச்சொல்லை மறந்துவிட்டீர்களா?',
-        english: 'ஆங்கிலம்',
-        hindi: 'ஹிந்தி',
-        tamil: 'தமிழ்',
-        remember: 'என்னை நினைவில் கொள்க',
-        login: 'உள்நுழைய'
-    }
-};
-const LoginForm = () => {
+const LoginForm = ({ onLanguageChange }) => {
     const initialValues = { email: '', password: '', language: detectBrowserLanguage(), remindme: false };
     const [uiLanguage, setUiLanguage] = useState(initialValues.language);
     const [showPassword, setShowPassword] = useState(false);
@@ -77,12 +41,19 @@ const LoginForm = () => {
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
+    useEffect(() => {
+        onLanguageChange(uiLanguage); // Invoke the parent callback
+    }, [uiLanguage, onLanguageChange]);
 
+
+    console.log('Current UI Language:', uiLanguage);
+    console.log('Current Error:', errors.email);
+    console.log('Translations:', translation);
     return (
         <form className='form-inline' onSubmit={handleSubmit}>
             <div className='login-box'>
                 <div className="mb-3 row">
-                    <label htmlFor="email" className="col-sm-3 col-form-label">{translations[uiLanguage].email}:</label>
+                    <label htmlFor="email" className="col-sm-3 col-form-label">{translation[uiLanguage].email}:</label>
                     <div className="col-sm-9">
                         <div className="input-group form-group">
                             <span className="input-group-text">
@@ -92,11 +63,14 @@ const LoginForm = () => {
                             </span>
                             <input type="email" name='email' id='email' className="form-control" placeholder="email@example.com" value={values.email} onChange={handleChange} />
                         </div>
-                        {errors.email && <p className='error' data-testid="error">{errors.email}</p>}
+                        {errors.email && <p className='error' data-testid="error">
+                            {/* {errors.email} */}
+                            {translation[uiLanguage].errors[errors.email]}
+                        </p>}
                     </div>
                 </div>
                 <div className="mb-1 row">
-                    <label htmlFor="password" className="col-sm-3 col-form-label">{translations[uiLanguage].password}:</label>
+                    <label htmlFor="password" className="col-sm-3 col-form-label">{translation[uiLanguage].password}:</label>
                     <div className="col-sm-9">
                         <div className="input-group form-group">
                             <span className="input-group-text">
@@ -122,28 +96,29 @@ const LoginForm = () => {
                                 }
                             </button>
                         </div>
-                        {errors.password && <p className='error'>{errors.password}</p>}
+
+                        {errors.password && <p className='error'>{translation[uiLanguage].errors[errors.password]}</p>}
 
                     </div>
                 </div>
                 <div className="mb-3 row">
                     <div className="col-sm-9 offset-sm-3">
-                        <Link to={"/forgot-password"} className="textLink forgot-pass">{translations[uiLanguage].forgot}</Link>
+                        <Link to={"/forgot-password"} className="textLink forgot-pass">{translation[uiLanguage].forgot}</Link>
                     </div>
                 </div>
                 <div className="mb-3 row">
-                    <label htmlFor="language" className="col-sm-3 col-form-label">{translations[uiLanguage].language}:</label>
+                    <label htmlFor="language" className="col-sm-3 col-form-label">{translation[uiLanguage].language}:</label>
                     <div className="col-sm-9">
                         <select
                             className='form-select'
                             name='language'
                             value={values.language}
                             onChange={handleChange}
-                             data-testid='language-select'
+                            data-testid='language-select'
                         >
-                            <option value='en'>English ({translations[uiLanguage].english})</option>
-                            <option value='hi'>हिन्दी ({translations[uiLanguage].hindi})</option>
-                            <option value='ta'>தமிழ் ({translations[uiLanguage].tamil})</option>
+                            <option value='en'>English ({translation[uiLanguage].english})</option>
+                            <option value='hi'>हिन्दी ({translation[uiLanguage].hindi})</option>
+                            <option value='ta'>தமிழ் ({translation[uiLanguage].tamil})</option>
                         </select>
                     </div>
                 </div>
@@ -153,16 +128,16 @@ const LoginForm = () => {
                     <div className="col-sm-9 offset-sm-3">
                         <div className="switchcheck">
                             <input type="checkbox" className="dn" id="remindme" name='remindme' checked={values.remindme} onChange={handleChange} data-testid="remindme-checkbox" />
-                            <label for="remindme" className="toggle">
+                            <label htmlFor="remindme" className="toggle">
                                 <span className="toggle__handler"></span>
                             </label>
-                            <i className="check-lebel">{translations[uiLanguage].remember}</i>
+                            <i className="check-lebel">{translation[uiLanguage].remember}</i>
                         </div>
                     </div>
                 </div>
             </div>
             <div className='text-center'>
-                <button type="submit" data-testid="login-button" className="btn login-btn">{translations[uiLanguage].login}</button>
+                <button type="submit" data-testid="login-button" className="btn login-btn">{translation[uiLanguage].login}</button>
             </div>
         </form>
     )

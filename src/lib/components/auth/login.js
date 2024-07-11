@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from '../../assets/img/logo.svg'
 import LoginForm from './login-form'
+import translation from '../../utils/utility/translation.json';
+
 
 export default function Login() {
+    const [selectedLanguage, setSelectedLanguage] = useState('en'); 
+
+    const handleLanguageChange = (language) => {
+        setSelectedLanguage(language);
+    }
+    console.log(selectedLanguage)
+    
     return (<>
         <section className="login-wrapper">
             <div className='container'>
@@ -14,14 +23,14 @@ export default function Login() {
                                     <img src={Logo} className='logo' data-testid="logo" />
                                 </a>
                             </div>
-                            <LoginForm />
+                            <LoginForm onLanguageChange={handleLanguageChange} />
                         </div>
                     </div>
                 </div>
             </div>
 
         </section>
-        <footer>Copyright 2024 Noventiq | Powered by Noventiq</footer>
+        <footer>{translation[selectedLanguage].copyrights}</footer>
     </>
     )
 }

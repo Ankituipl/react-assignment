@@ -1,0 +1,63 @@
+ {
+    "en": {
+      "email": "Email",
+    "password": "Password",
+    "forgot": "Forgot Password?",
+    "language": "Language",
+    "english": "English",
+    "hindi": "Hindi",
+    "tamil": "Tamil",
+    "remember": "Remember me",
+    "login": "Login",
+    "selectLanguage": "Select language",
+    "copyrights": "Copyright 2024 Noventiq | Powered by Noventiq",
+    "errors": {
+      "INVALID_EMAIL": "Invalid email address",
+      "REQUIRED_EMAIL": "Email Address is Required!",
+      "REQUIRED_CORPORATE": "Public email addresses are not allowed",
+      "REQUIRED_PASSWORD": "Password is Required!",
+      "WHITE_SPACE": "White or Empty Space is not Allowed!"
+    }
+  },
+    "hi": {
+      "email": "ईमेल",
+      "password": "पासवर्ड",
+      "forgot": "पासवर्ड भूल गए?",
+      "language": "भाषा",
+      "english": "अंग्रेज़ी",
+      "hindi": "हिंदी",
+      "tamil": "तमिल",
+      "remember": "मुझे याद रखें",
+      "login": "लॉगिन",
+      "selectLanguage": "भाषा चुनें",
+      "copyrights": "कॉपीराइट 2024 नोवेन्टिक | नोवेंटिक द्वारा संचालित",
+      "errors": {
+      "INVALID_EMAIL": "अमान्य ईमेल पता",
+      "REQUIRED_EMAIL": "ईमेल पता आवश्यक है!",
+      "REQUIRED_CORPORATE": "सार्वजनिक ईमेल पते की अनुमति नहीं है",
+      "REQUIRED_PASSWORD": "पासवर्ड आवश्यक है!",
+      "WHITE_SPACE": "सफेद या खाली स्थान की अनुमति नहीं है!"
+    }
+  },
+    "ta": {
+      "email": "மின்னஞ்சல்",
+      "password": "கடவுச்சொல்",
+      "forgot": "கடவுச்சொல் மறந்துவிட்டேன்?",
+      "language": "மொழி",
+      "english": "ஆங்கிலம்",
+      "hindi": "இந்தி",
+      "tamil": "தமிழ்",
+      "remember": "என்னை நினைவில் வைக்கவும்",
+      "login": "உள்நுழைய",
+      "selectLanguage": "மொழியைத் தேர்ந்தெடுக்கவும்",
+      "copyrights": "பதிப்புரிமை 2024 Noventiq | Noventiq மூலம் இயக்கப்படுகிறது",
+      "errors": {
+      "INVALID_EMAIL": "தவறான மின்னஞ்சல் முகவரி",
+      "REQUIRED_EMAIL": "மின்னஞ்சல் முகவரி தேவை!",
+      "REQUIRED_CORPORATE": "பொது மின்னஞ்சல் முகவரிகள் அனுமதிக்கப்படவில்லை",
+      "REQUIRED_PASSWORD": "கடவுச்சொல் தேவை!",
+      "WHITE_SPACE": "வெள்ளை அல்லது காலியான இடம் அனுமதிக்கப்படவில்லை!"
+    }
+  }
+  }
+  
