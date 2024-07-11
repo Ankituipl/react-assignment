@@ -77,4 +77,8 @@ npm install react-router-dom
 ### install bootstrap scss
 
 npm install bootstrap sass
+
+
 create a custom style in assets folder (custom.scss)
+create a translation file to translate the UI content
+Test cases are written in App.test.js file
