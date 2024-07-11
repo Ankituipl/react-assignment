@@ -104,9 +104,9 @@ const LoginForm = () => {
                                     <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1" />
                                 </svg>
                             </span>
-                            <input type={showPassword ? "text" : "password"} name='password' className="form-control" placeholder="****" value={values.password}
+                            <input type={showPassword ? "text" : "password"} name='password' data-testid='password' className="form-control" placeholder="****" value={values.password}
                                 onChange={handleChange} />
-                            <button type='button' className='btn show-password' onClick={toggleShowPassword}>
+                            <button type='button' className='btn show-password' data-testid='password-visibility' onClick={toggleShowPassword}>
                                 {showPassword ?
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye-slash" viewBox="0 0 16 16">
                                         <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
@@ -139,7 +139,7 @@ const LoginForm = () => {
                             name='language'
                             value={values.language}
                             onChange={handleChange}
-                            required
+                             data-testid='language-select'
                         >
                             <option value='en'>English ({translations[uiLanguage].english})</option>
                             <option value='hi'>हिन्दी ({translations[uiLanguage].hindi})</option>
@@ -152,7 +152,7 @@ const LoginForm = () => {
                 <div className="mb-3 row">
                     <div className="col-sm-9 offset-sm-3">
                         <div className="switchcheck">
-                            <input type="checkbox" className="dn" id="remindme" name='remindme' checked={values.remindme} onChange={handleChange} />
+                            <input type="checkbox" className="dn" id="remindme" name='remindme' checked={values.remindme} onChange={handleChange} data-testid="remindme-checkbox" />
                             <label for="remindme" className="toggle">
                                 <span className="toggle__handler"></span>
                             </label>
@@ -162,7 +162,7 @@ const LoginForm = () => {
                 </div>
             </div>
             <div className='text-center'>
-                <button type="submit" className="btn login-btn">{translations[uiLanguage].login}</button>
+                <button type="submit" data-testid="login-button" className="btn login-btn">{translations[uiLanguage].login}</button>
             </div>
         </form>
     )
